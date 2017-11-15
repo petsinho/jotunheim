@@ -1,0 +1,23 @@
+.header-container{
+  display: flex;
+  justify-content: center;
+  margin: auto;
+  background-color: #717A8A;
+  font-size: xx-large;
+  color: white;
+  padding: 20px;
+  font-family: 'Amatic SC'
+}
+
+.header-item{
+  margin: 40px;
+  cursor: pointer;
+}
+
+.header-item:hover {
+  color: rgb(185, 185, 230);
+}
+
+.header-item:visited {
+  color: plum;
+}
