@@ -1,0 +1,35 @@
+.project-preview-container{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 35%;
+  margin: 10px;
+  background-color: #717A8A;
+  font-size: medium;
+  color: white;
+  padding: 10px;
+  font-family: 'Amatic SC'
+}
+
+.project-preview-item{
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+}
+
+.carousel{
+  width: 90%;
+}
+
+.project-preview-item:hover {
+  color: rgb(185, 185, 230);
+  border-style: solid;
+  border-color: white;
+}
+
+
+.project-previews-wrap{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+}

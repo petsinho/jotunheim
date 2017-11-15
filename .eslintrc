@@ -3,6 +3,16 @@
     "extends": [
       "airbnb-base"
     ],
+    "plugins": [
+      "react"
+    ],
+    "parserOptions": {
+      "ecmaVersion": 6,
+      "sourceType": "module",
+      "ecmaFeatures": {
+        "jsx": true
+      }
+    },
     "rules": {
       "arrow-body-style": 0,
       "no-underscore-dangle": 0,
