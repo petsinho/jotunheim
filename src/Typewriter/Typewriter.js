@@ -11,7 +11,6 @@ const cursor = {
 };
 
 class Typewriter extends Component {
-
   render() {
     return (
       <div>
@@ -24,6 +23,5 @@ class Typewriter extends Component {
     );
   }
 }
-
 
 export default Typewriter;
