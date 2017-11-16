@@ -39,6 +39,18 @@ class ProjectPreviews extends Component {
           'http://d3ph2ovtiyj37.cloudfront.net/wp-content/uploads/2017/01/18162421/orchid.jpg',
           'http://d3ph2ovtiyj37.cloudfront.net/wp-content/uploads/2017/01/18162421/orchid.jpg'],
       },
+      {
+        name: 'unity2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        pictures: ['https://i.pinimg.com/originals/20/a5/6a/20a56afeb9c7a18cd64829acb7d42fa0.jpg', 'http://d3ph2ovtiyj37.cloudfront.net/wp-content/uploads/2017/01/18162421/orchid.jpg'],
+      },
+      {
+        name: 'React2',
+        description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis   nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        pictures: ['https://i.pinimg.com/originals/20/a5/6a/20a56afeb9c7a18cd64829acb7d42fa0.jpg',
+          'http://d3ph2ovtiyj37.cloudfront.net/wp-content/uploads/2017/01/18162421/orchid.jpg',
+          'http://d3ph2ovtiyj37.cloudfront.net/wp-content/uploads/2017/01/18162421/orchid.jpg'],
+      },
     ];
 
     return (

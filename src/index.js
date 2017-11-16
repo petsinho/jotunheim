@@ -7,7 +7,7 @@ import registerServiceWorker from './registerServiceWorker';
 
 WebFont.load({
   google: {
-    families: ['Titillium Web:300,400,700', 'sans-serif', 'Amatic SC', 'cursive'],
+    families: ['Titillium Web:300,400,700', 'sans-serif', 'Amatic SC', 'Iceland', 'cursive'],
   },
 });
 
