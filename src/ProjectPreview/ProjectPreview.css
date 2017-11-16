@@ -2,13 +2,13 @@
   display: flex;
   flex-direction: column;
   margin: auto;
-  width: 35%;
-  margin: 10px;
-  background-color: #717A8A;
+  width: 25%;
+  margin: 5px;
   font-size: medium;
   color: white;
-  padding: 10px;
-  font-family: 'Amatic SC'
+  padding: 5px;
+  font-family: 'Amatic SC';
+  padding-top: 50px;
 }
 
 .project-preview-item{
@@ -17,12 +17,17 @@
   display: flex;
 }
 
+.name{
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+}
+
 .carousel{
   width: 90%;
 }
 
 .project-preview-item:hover {
-  color: rgb(185, 185, 230);
   border-color: white;
 }
 
@@ -31,4 +36,7 @@
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
+  width: 65%;
+  align-items: center;
+  margin: auto;
 }
