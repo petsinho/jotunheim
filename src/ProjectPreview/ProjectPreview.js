@@ -7,6 +7,20 @@ import './ProjectPreview.css';
 const Carousel = require('nuka-carousel');
 
 class ProjectPreview extends Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      carouselInterval: 5000 + (Math.random() * 1500),
+    };
+    setInterval(this.randomizeCarousel.bind(this), 4000);
+  }
+
+  randomizeCarousel() {
+    this.setState({
+      carouselInterval: 3000 + (Math.random() * 1500),
+    });
+  }
   onChange = () => {
   }
 
@@ -19,8 +33,9 @@ class ProjectPreview extends Component {
   renderCarousel() {
     // TODO: get real images links to s3 bucket from redux store
     const { pictures } = this.props.project;
+    const { carouselInterval } = this.state;
     return (
-    <Carousel>
+    <Carousel autoplay wrapAround autoplayInterval={carouselInterval} >
       {pictures.map(img =>
         (
           <div key={`image${img}`}>
