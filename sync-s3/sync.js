@@ -1,8 +1,6 @@
-// import s3 from 's3';
-// import { accessKeyId, secretAccessKey, region } from '../secrets';
 const s3 = require('s3');
 const path = require('path');
-const { accessKeyId, secretAccessKey, region } = require('../secrets');
+const { accessKeyId, secretAccessKey, region } = require('../src/secrets');
 
 const client = s3.createClient({
   maxAsyncS3: 20,     // this is the default

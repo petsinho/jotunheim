@@ -7,7 +7,9 @@
     "email": "panagiotis.petsas@gmail.com"
   },
   "dependencies": {
+    "faye": "^1.2.4",
     "nuka-carousel": "^3.0.0",
+    "permessage-deflate": "^0.1.6",
     "prop-types": "^15.6.0",
     "react": "^16.1.1",
     "react-addons-css-transition-group": "^15.6.2",
