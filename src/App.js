@@ -1,44 +1,74 @@
 import React, { Component } from 'react';
 import Typist from 'react-typist';
 import Faye from 'faye';
+import PropTypes from 'prop-types';
 import deflate from 'permessage-deflate';
+import { Provider, connect } from 'react-redux';
 import logo from './logo.svg';
 import './App.css';
 import Header from './Header/Header';
 import ProjectPreviews from './ProjectPreview/ProjectPreviews';
 import Typewriter from './Typewriter/Typewriter';
+import store from './store';
 
 const { wsServerUrl, wsPort } = require('./secrets');
 
 
 class App extends Component {
+  static propTypes = {
+    projects: PropTypes.array,
+  };
+
+
   render() {
+    console.log('projects: ', this.props.projects);
     return (
-      <div className="App">
-        <Header/>
-        <Typewriter />
-          <ProjectPreviews/>
-         TODO: implement 🚧 ⛑
-      </div>
+        <div className="App">
+          <Header/>
+          <Typewriter />
+            <ProjectPreviews/>
+             implement 🚧 ⛑
+        </div>
     );
   }
 }
 
-export default App;
+const action = ({ type, payload }) => store.dispatch({ type, payload });
 
 const client = new Faye.Client(`${wsServerUrl}:${wsPort}`);
 // const client = new Faye.Client(`http://localhost:${wsPort}`);
 client.addWebsocketExtension(deflate);
 
-const subscription = client.subscribe('/messages', (message) => {
-  console.log('got msg!!');
-  alert(`Got a message: ${message.text}`);
+const subscription = client.subscribe('/projects', (projects) => {
+  //  Call reducer that will update store with projects
+  action({ type: 'projects', payload: projects });
 });
 
 subscription.callback(() => {
-  console.log('[SUBSCRIBE  2 SUCCEEDED]');
+  console.log('[SUBSCRIBE  SUCCEEDED]');
 });
 
 subscription.errback((error) => {
   console.log('[SUBSCRIBE FAILED]', error);
 });
+
+export default connect(
+  state => ({
+    projects: store.getState().projects,
+  }),
+  dispatch => ({
+    // getActiveProjects: () => dispatch({
+    //   type: 'projects',
+    // }),
+    // onHide: () => dispatch({
+    //   type: action.setDisplay,
+    //   display: display.none,
+    // }),
+    // onShow: () => dispatch({
+    //   type: action.setDisplay,
+    //   display: display.button,
+    // }),
+  })
+)(App);
+
+// export default App;
