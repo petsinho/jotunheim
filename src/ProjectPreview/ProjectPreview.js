@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
+import Carousel from 'nuka-carousel';
 import PropTypes from 'prop-types';
 import './ProjectPreview.css';
-
-const Carousel = require('nuka-carousel');
 
 class ProjectPreview extends Component {
 
@@ -46,10 +45,10 @@ class ProjectPreview extends Component {
   }
 
   render() {
-    const { name, description } = this.props.project;
+    const { title, description } = this.props.project;
     return (
       <div className="project-preview-container">
-        <div className="project-preview-item name"> {name} </div>
+        <div className="project-preview-item name"> {title} </div>
         {this.renderCarousel()}
         <div className="project-preview-item"> {description} </div>
       </div>
@@ -59,7 +58,7 @@ class ProjectPreview extends Component {
 
 ProjectPreview.propTypes = {
   project: PropTypes.shape({
-    name: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
     images: PropTypes.array,
   }),

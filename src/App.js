@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import Typist from 'react-typist';
 import Faye from 'faye';
 import PropTypes from 'prop-types';
 import deflate from 'permessage-deflate';
-import { Provider, connect } from 'react-redux';
-import logo from './logo.svg';
+import { connect } from 'react-redux';
+// import logo from './logo.svg';
 import './App.css';
 import Header from './Header/Header';
 import ProjectPreviews from './ProjectPreview/ProjectPreviews';
@@ -21,12 +20,12 @@ class App extends Component {
 
 
   render() {
-    console.log('projects: ', this.props.projects);
+    const { projects } = this.props;
     return (
         <div className="App">
           <Header/>
           <Typewriter />
-            <ProjectPreviews/>
+            <ProjectPreviews projects={projects}/>
              implement 🚧 ⛑
         </div>
     );
