@@ -31,9 +31,10 @@ class ProjectDetails extends Component {
 
 ProjectDetails.propTypes = {
   project: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    images: PropTypes.array,
+    pictures: PropTypes.array,
   }),
 };
 

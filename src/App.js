@@ -3,7 +3,7 @@ import Faye from 'faye';
 import PropTypes from 'prop-types';
 import deflate from 'permessage-deflate';
 import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
 import Header from './Header/Header';
@@ -21,17 +21,17 @@ class App extends Component {
   };
 
   renderPreviews = () =>
-     <ProjectPreviews projects={this.props.projects}/>;
+    <ProjectPreviews projects={this.props.projects} />;
 
   render() {
     return (
       <Router>
         <div className="App">
-          <Header/>
-          <Typewriter/>
-          <ProjectRoutes/>
+          <Header />
+          <Typewriter />
+          <ProjectRoutes />
           <Switch>
-            <Route exact path='/' render={this.renderPreviews}/>
+            <Route exact path="/" render={this.renderPreviews} />
           </Switch>
             implement 🚧 ⛑
         </div>
@@ -75,7 +75,7 @@ export default connect(
     //   type: action.setDisplay,
     //   display: display.button,
     // }),
-  })
+  }),
 )(App);
 
 // export default App;

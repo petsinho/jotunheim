@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import ProjectPreview from './ProjectPreview';
 import './ProjectPreview.css';
 
@@ -25,18 +24,16 @@ class ProjectPreviews extends Component {
 
   render() {
     const { projects } = this.props;
-    const projectsWithImages = projects.map(p => {
-      return {
-        ...p,
-        pictures: getSomePictures(),
-      };
-    });
+    const projectsWithImages = projects.map(p => ({
+      ...p,
+      pictures: getSomePictures(),
+    }));
     console.log('projs : ', projectsWithImages);
 
     return (
       <div className="project-previews-wrap">
         { projectsWithImages.map(p =>
-          <ProjectPreview key={`project${p.title}`} project={p} />
+          <ProjectPreview key={`project${p.title}`} project={p} />,
         )}
       </div>
     );

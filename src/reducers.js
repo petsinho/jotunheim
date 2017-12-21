@@ -3,8 +3,6 @@ import _ from 'lodash';
 
 export const getAllProjects = (state, action) => {
   const { type, payload } = action;
-  console.log('getting all projs red tpy ', type);
-  console.log('getting all projs red payload ', payload);
   switch (type) {
     case 'projects':
       return payload || state;

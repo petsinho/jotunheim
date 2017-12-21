@@ -14,11 +14,6 @@ class ProjectPreview extends Component {
     setInterval(this.randomizeCarousel.bind(this), 4000);
   }
 
-  randomizeCarousel() {
-    this.setState({
-      carouselInterval: 3000 + (Math.random() * 1500),
-    });
-  }
   onChange = () => {
   }
 
@@ -28,6 +23,11 @@ class ProjectPreview extends Component {
   onClickThumb = () => {
   }
 
+  randomizeCarousel() {
+    this.setState({
+      carouselInterval: 3000 + (Math.random() * 1500),
+    });
+  }
   renderCarousel() {
     // TODO: get real images links to s3 bucket from redux store
     const { pictures } = this.props.project;
@@ -39,7 +39,7 @@ class ProjectPreview extends Component {
             <div key={`image${img}`}>
               <img src={img} height="222" width="440" />
             </div>
-          )
+          ),
         )}
       </Carousel>
     );
@@ -61,9 +61,10 @@ class ProjectPreview extends Component {
 
 ProjectPreview.propTypes = {
   project: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     description: PropTypes.string.isRequired,
-    images: PropTypes.array,
+    pictures: PropTypes.array,
   }),
 };
 
