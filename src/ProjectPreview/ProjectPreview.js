@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Carousel from 'nuka-carousel';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './ProjectPreview.css';
 
@@ -45,10 +46,12 @@ class ProjectPreview extends Component {
   }
 
   render() {
-    const { title, description } = this.props.project;
+    const { id, title, description } = this.props.project;
     return (
       <div className="project-preview-container">
-        <div className="project-preview-item name"> {title} </div>
+        <Link to={`/project/${id}`}>
+          <div className="project-preview-item name"> {title} </div>
+        </Link>
         {this.renderCarousel()}
         <div className="project-preview-item"> {description} </div>
       </div>

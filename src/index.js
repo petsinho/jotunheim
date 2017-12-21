@@ -7,6 +7,9 @@ import App from './App';
 import registerServiceWorker from './registerServiceWorker';
 
 import store from './store';
+import { log } from 'util';
+import { fail } from 'assert';
+import { request } from 'http';
 
 WebFont.load({
   google: {
@@ -21,3 +24,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 registerServiceWorker();
+

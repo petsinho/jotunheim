@@ -3,11 +3,13 @@ import Faye from 'faye';
 import PropTypes from 'prop-types';
 import deflate from 'permessage-deflate';
 import { connect } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 // import logo from './logo.svg';
 import './App.css';
 import Header from './Header/Header';
 import ProjectPreviews from './ProjectPreview/ProjectPreviews';
 import Typewriter from './Typewriter/Typewriter';
+import ProjectRoutes from './ProjectRoutes/ProjectRoutes';
 import store from './store';
 
 const { wsServerUrl, wsPort } = require('./secrets');
@@ -18,16 +20,22 @@ class App extends Component {
     projects: PropTypes.array,
   };
 
+  renderPreviews = () =>
+     <ProjectPreviews projects={this.props.projects}/>;
 
   render() {
-    const { projects } = this.props;
     return (
+      <Router>
         <div className="App">
           <Header/>
           <Typewriter />
-            <ProjectPreviews projects={projects}/>
+          <ProjectRoutes />
+          <Switch>
+            <Route exact path='/' render={this.renderPreviews}/>
+          </Switch>
              implement 🚧 ⛑
         </div>
+      </Router>
     );
   }
 }

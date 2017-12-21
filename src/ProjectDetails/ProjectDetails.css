@@ -1,0 +1,42 @@
+.project-preview-container{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  width: 25%;
+  margin: 5px;
+  font-size: medium;
+  color: white;
+  padding: 5px;
+  font-family: 'Amatic SC';
+  padding-top: 50px;
+}
+
+.project-preview-item{
+  margin: 5px;
+  cursor: pointer;
+  display: flex;
+}
+
+.name{
+  display: flex;
+  justify-content: center;
+  font-size: xx-large;
+}
+
+.carousel{
+  width: 90%;
+}
+
+.project-preview-item:hover {
+  border-color: white;
+}
+
+
+.project-previews-wrap{
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  width: 65%;
+  align-items: center;
+  margin: auto;
+}
