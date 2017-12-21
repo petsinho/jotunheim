@@ -5,11 +5,7 @@ import { Provider } from 'react-redux';
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-
 import store from './store';
-import { log } from 'util';
-import { fail } from 'assert';
-import { request } from 'http';
 
 WebFont.load({
   google: {

@@ -33,15 +33,15 @@ class ProjectPreview extends Component {
     const { pictures } = this.props.project;
     const { carouselInterval } = this.state;
     return (
-    <Carousel autoplay wrapAround autoplayInterval={carouselInterval} >
-      {pictures.map(img =>
-        (
-          <div key={`image${img}`}>
-            <img src={img} height="222" width="440" />
-          </div>
-        )
-      )}
-    </Carousel>
+      <Carousel autoplay wrapAround autoplayInterval={carouselInterval} >
+        {pictures.map(img =>
+          (
+            <div key={`image${img}`}>
+              <img src={img} height="222" width="440" />
+            </div>
+          )
+        )}
+      </Carousel>
     );
   }
 
@@ -49,7 +49,7 @@ class ProjectPreview extends Component {
     const { id, title, description } = this.props.project;
     return (
       <div className="project-preview-container">
-        <Link to={`/project/${id}`}>
+        <Link to={`/project/${id}`} >
           <div className="project-preview-item name"> {title} </div>
         </Link>
         {this.renderCarousel()}

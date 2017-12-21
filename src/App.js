@@ -28,12 +28,12 @@ class App extends Component {
       <Router>
         <div className="App">
           <Header/>
-          <Typewriter />
-          <ProjectRoutes />
+          <Typewriter/>
+          <ProjectRoutes/>
           <Switch>
             <Route exact path='/' render={this.renderPreviews}/>
           </Switch>
-             implement 🚧 ⛑
+            implement 🚧 ⛑
         </div>
       </Router>
     );
@@ -52,7 +52,7 @@ const subscription = client.subscribe('/projects', (projects) => {
 });
 
 subscription.callback(() => {
-  console.log('[SUBSCRIBE  SUCCEEDED]');
+  console.log('[SUBSCRIBE SUCCEEDED]');
 });
 
 subscription.errback((error) => {
@@ -61,7 +61,7 @@ subscription.errback((error) => {
 
 export default connect(
   state => ({
-    projects: store.getState().projects,
+    projects: state.projects,
   }),
   dispatch => ({
     // getActiveProjects: () => dispatch({

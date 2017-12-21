@@ -1,7 +1,10 @@
 import { combineReducers } from 'redux';
+import _ from 'lodash';
 
-const projects = (state, action) => {
+export const getAllProjects = (state, action) => {
   const { type, payload } = action;
+  console.log('getting all projs red tpy ', type);
+  console.log('getting all projs red payload ', payload);
   switch (type) {
     case 'projects':
       return payload || state;
@@ -10,5 +13,9 @@ const projects = (state, action) => {
   }
 };
 
+export const getSelectedProject = (state, id) => {
+  if (!state || !state.projects) return null;
+  return _.find(state.projects, p => p.id === id);
+};
 
-export default combineReducers({ projects });
+export default combineReducers({ projects: getAllProjects, getSelectedProject });

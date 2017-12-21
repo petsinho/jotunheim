@@ -9,9 +9,7 @@ class ProjectDetails extends Component {
     this.state = {
       carouselInterval: 5000 + (Math.random() * 1500),
     };
-    const projectId = props.match.params.id;
     // TODO: cleanup and show details
-    console.log('showing details for project: ', projectId);
     setInterval(this.randomizeCarousel.bind(this), 4000);
   }
 
@@ -22,9 +20,12 @@ class ProjectDetails extends Component {
   }
 
   render() {
-    return (
-      <div className="project-preview-item name"> more details on this </div>
-    );
+    const { project } = this.props;
+
+    return project ? (
+      <div className="project-preview-item name"> More details on {project.title} </div>
+    ) :
+    '';
   }
 }
 
