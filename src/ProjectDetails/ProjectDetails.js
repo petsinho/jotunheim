@@ -9,7 +9,11 @@ class ProjectDetails extends Component {
     // TODO: get real images links to s3 bucket from redux store
     const { pictures } = this.props.project;
     if (!pictures) return;
-    return (<Carousel pictures={pictures} size="medium" />);
+    return (
+      <div style={{ width: '50%', display: 'flex', margin: 'auto' }}>
+        <Carousel pictures={pictures} size="medium" />
+      </div>
+    );
   }
 
   render() {
