@@ -1,15 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import ProjectPreview from './ProjectPreview';
 import './ProjectPreview.css';
 
-const getSomePictures = (howMany = Math.ceil(Math.random() * 10)) => {
-  const result = [];
-  for (let i = 0; i < howMany; i++) {
-    const picNumber = Math.ceil(Math.random() * 100);
-    result.push(`https://picsum.photos/300?image=${picNumber}`);
-  }
-  return result;
-};
 
 class ProjectPreviews extends Component {
 
@@ -24,20 +17,26 @@ class ProjectPreviews extends Component {
 
   render() {
     const { projects } = this.props;
-    const projectsWithImages = projects.map(p => ({
-      ...p,
-      pictures: getSomePictures(),
-    }));
-    console.log('projs : ', projectsWithImages);
-
+    console.log('projs : ', projects);
     return (
       <div className="project-previews-wrap">
-        { projectsWithImages.map(p =>
+        { projects.map(p =>
           <ProjectPreview key={`project${p.title}`} project={p} />,
         )}
       </div>
     );
   }
 }
+
+ProjectPreviews.propTypes = {
+  projects: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      description: PropTypes.string.isRequired,
+      pictures: PropTypes.array,
+    }),
+  ),
+};
 
 export default ProjectPreviews;

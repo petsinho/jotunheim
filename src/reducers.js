@@ -13,6 +13,8 @@ export const getAllProjects = (state, action) => {
 
 export const getSelectedProject = (state, id) => {
   if (!state || !state.projects) return null;
+  console.log('state.projects', state.projects);
+
   return _.find(state.projects, p => p.id === id);
 };
 

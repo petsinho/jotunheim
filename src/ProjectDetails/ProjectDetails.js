@@ -1,29 +1,36 @@
 import React, { Component } from 'react';
 import Carousel from 'nuka-carousel';
 import PropTypes from 'prop-types';
+import './ProjectDetails.css';
 
 class ProjectDetails extends Component {
 
-  constructor(props) {
-    super(props);
-    this.state = {
-      carouselInterval: 5000 + (Math.random() * 1500),
-    };
-    // TODO: cleanup and show details
-    setInterval(this.randomizeCarousel.bind(this), 4000);
-  }
-
-  randomizeCarousel() {
-    this.setState({
-      carouselInterval: 3000 + (Math.random() * 1500),
-    });
+  renderCarousel() {
+    // TODO: get real images links to s3 bucket from redux store
+    const { pictures } = this.props.project;
+    if (!pictures) return;
+    return (
+      <Carousel autoplay wrapAround autoplayInterval={5000} >
+        {pictures.map(img =>
+          (
+            <div key={`image${img}`}>
+              <img src={img} height="422" width="640" />
+            </div>
+          ),
+        )}
+      </Carousel>
+    );
   }
 
   render() {
     const { project } = this.props;
 
     return project ? (
-      <div className="project-preview-item name"> More details on {project.title} </div>
+      <div>
+        <div className="project-detail name"> {project.title} </div>
+        {this.renderCarousel()}
+        <div className="project-detail desc"> {project.description} </div>
+      </div>
     ) :
     '';
   }

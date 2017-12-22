@@ -49,7 +49,7 @@ class ProjectPreview extends Component {
     const { id, title, description } = this.props.project;
     return (
       <div className="project-preview-container">
-        <Link to={`/project/${id}`} >
+        <Link style={{ textDecoration: 'none' }} to={`/project/${id}`} >
           <div className="project-preview-item name"> {title} </div>
         </Link>
         {this.renderCarousel()}

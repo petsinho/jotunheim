@@ -1,36 +1,28 @@
-.project-preview-container{
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  width: 25%;
-  margin: 5px;
-  font-size: medium;
-  color: white;
-  padding: 5px;
-  font-family: 'Amatic SC';
-  padding-top: 50px;
-}
-
-.project-preview-item{
+.project-detail{
   margin: 5px;
   cursor: pointer;
-  display: flex;
+  color: white;
 }
 
-.name{
-  display: flex;
-  justify-content: center;
+.project-name{
   font-size: xx-large;
+  color: white;
+  justify-content: center;
+}
+
+.project-desc{
+  font-size: large;
+  color: white;
+  align-content: center;
 }
 
 .carousel{
-  width: 90%;
+  width: 100%;
 }
 
 .project-preview-item:hover {
   border-color: white;
 }
-
 
 .project-previews-wrap{
   display: flex;

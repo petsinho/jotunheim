@@ -40,6 +40,15 @@ class App extends Component {
   }
 }
 
+const getSomePictures = (howMany = Math.ceil(Math.random() * 10)) => {
+  const result = [];
+  for (let i = 0; i < howMany; i++) {
+    const picNumber = Math.ceil(Math.random() * 100);
+    result.push(`https://picsum.photos/300?image=${picNumber}`);
+  }
+  return result;
+};
+
 const action = ({ type, payload }) => store.dispatch({ type, payload });
 
 const client = new Faye.Client(`${wsServerUrl}:${wsPort}`);
@@ -48,7 +57,15 @@ client.addWebsocketExtension(deflate);
 
 const subscription = client.subscribe('/projects', (projects) => {
   //  Call reducer that will update store with projects
-  action({ type: 'projects', payload: projects });
+  // Add pics if not any
+  let projectsWithImages = projects;
+  if (!projects[0].pictures) {
+    projectsWithImages = projects.map(p => ({
+      ...p,
+      pictures: getSomePictures(),
+    }));
+  }
+  action({ type: 'projects', payload: projectsWithImages });
 });
 
 subscription.callback(() => {
