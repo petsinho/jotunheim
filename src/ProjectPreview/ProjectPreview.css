@@ -23,10 +23,6 @@
   font-size: xx-large;
 }
 
-.carousel{
-  width: 90%;
-}
-
 .project-preview-item:hover {
   border-color: white;
 }

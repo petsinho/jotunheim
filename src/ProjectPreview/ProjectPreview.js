@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Carousel from 'nuka-carousel';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import './ProjectPreview.css';
+import Carousel from '../Carousel/Carousel';
 
 class ProjectPreview extends Component {
 
@@ -33,15 +33,7 @@ class ProjectPreview extends Component {
     const { pictures } = this.props.project;
     const { carouselInterval } = this.state;
     return (
-      <Carousel autoplay wrapAround autoplayInterval={carouselInterval} >
-        {pictures.map(img =>
-          (
-            <div key={`image${img}`}>
-              <img src={img} height="222" width="440" />
-            </div>
-          ),
-        )}
-      </Carousel>
+      <Carousel pictures={pictures} size="small" carouselInterval={carouselInterval} />
     );
   }
 

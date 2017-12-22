@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import Carousel from 'nuka-carousel';
 import PropTypes from 'prop-types';
 import './ProjectDetails.css';
+import Carousel from '../Carousel/Carousel';
 
 class ProjectDetails extends Component {
 
@@ -9,17 +9,7 @@ class ProjectDetails extends Component {
     // TODO: get real images links to s3 bucket from redux store
     const { pictures } = this.props.project;
     if (!pictures) return;
-    return (
-      <Carousel autoplay wrapAround autoplayInterval={5000} >
-        {pictures.map(img =>
-          (
-            <div key={`image${img}`}>
-              <img src={img} height="422" width="640" />
-            </div>
-          ),
-        )}
-      </Carousel>
-    );
+    return (<Carousel pictures={pictures} size="medium" />);
   }
 
   render() {
