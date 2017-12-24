@@ -11,7 +11,7 @@ class ProjectDetails extends Component {
     if (!pictures) return;
     return (
       <div style={{ width: '50%', display: 'flex', margin: 'auto' }}>
-        <Carousel pictures={pictures} size="medium" />
+        <Carousel pictures={pictures} size="large" />
       </div>
     );
   }

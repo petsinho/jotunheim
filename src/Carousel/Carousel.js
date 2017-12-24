@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import LeftHand from 'react-icons/lib/fa/hand-o-left';
+import RightHand from 'react-icons/lib/fa/hand-o-right';
 import CarouselBase from 'nuka-carousel';
 import './Carousel.css';
 
@@ -17,9 +19,36 @@ const sizes = {
   large: { height: 622, width: 840 },
 };
 
+const getIconSize = (carouselSize) => {
+  switch (carouselSize) {
+    case 'small':
+      return 20;
+    case 'medium':
+    default:
+      return 30;
+    case 'large':
+      return 30;
+  }
+};
+
+const getIconPadding = (carouselSize) => {
+  switch (carouselSize) {
+    case 'small':
+      return 0;
+    case 'medium':
+    default:
+      return 0;
+    case 'large':
+      return 15;
+  }
+};
+
 class Carousel extends Component {
 
   render() {
+    const { pictures, carouselInterval, size } = this.props;
+    const iconSize = getIconSize(size);
+    const arrowPadding = getIconPadding(size);
     const Decorators = [{
       component: () => ({
         render() {
@@ -27,15 +56,15 @@ class Carousel extends Component {
             <button
               onClick={this.props.previousSlide}
             >
-              Previous
+              <LeftHand size={iconSize} />
             </button>
           );
         },
       }),
       position: 'CenterLeft',
       style: {
-        padding: 0,
-        opacity: 0.5,
+        padding: arrowPadding,
+        // opacity: 0.5,
       },
     },
     {
@@ -45,19 +74,18 @@ class Carousel extends Component {
             <button
               onClick={this.props.nextSlide}
             >
-              Next Slide
+              <RightHand size={iconSize} />
             </button>
           );
         },
       }),
       position: 'CenterRight',
       style: {
-        padding: 0,
-        opacity: 0.5,
+        padding: arrowPadding,
+        // opacity: 0.5,
       },
     },
     ];
-    const { pictures, carouselInterval, size } = this.props;
     const { height, width } = sizes[size];
     return (
       <CarouselBase autoplay wrapAround autoplayInterval={carouselInterval} decorators={Decorators} >
@@ -78,12 +106,14 @@ Carousel.propTypes = {
   carouselInterval: PropTypes.number,
   size: PropTypes.oneOf(['small', 'medium', 'large']),
   previousSlide: PropTypes.func,
+  nextSlide: PropTypes.func,
 };
 
 Carousel.defaultProps = {
   carouselInterval: 5000,
   size: 'medium',
   previousSlide: () => {}, // Comes from base component (CarouselBase)
+  nextSlide: () => {}, // Comes from base component (CarouselBase)
 };
 
 export default Carousel;

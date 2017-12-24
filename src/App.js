@@ -23,13 +23,18 @@ class App extends Component {
   renderPreviews = () =>
     <ProjectPreviews projects={this.props.projects} />;
 
+  renderTyper = () =>
+    <Typewriter projects={this.props.projects} />;
+
   render() {
     return (
       <Router>
         <div className="App">
           <Header />
-          <Typewriter />
           <ProjectRoutes />
+          <Switch>
+            <Route exact path="/" render={this.renderTyper} />
+          </Switch>
           <Switch>
             <Route exact path="/" render={this.renderPreviews} />
           </Switch>
