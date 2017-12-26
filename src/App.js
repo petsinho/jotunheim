@@ -56,13 +56,14 @@ const getSomePictures = (howMany = Math.ceil(Math.random() * 10)) => {
 
 const action = ({ type, payload }) => store.dispatch({ type, payload });
 
-const client = new Faye.Client(`${wsServerUrl}:${wsPort}`);
-// const client = new Faye.Client(`http://localhost:${wsPort}`);
+// const client = new Faye.Client(`${wsServerUrl}:${wsPort}`);
+const client = new Faye.Client(`http://localhost:${wsPort}`);
 client.addWebsocketExtension(deflate);
 
-const subscription = client.subscribe('/projects', (projects) => {
+const projectsSubscription = client.subscribe('/projects', (projects) => {
   //  Call reducer that will update store with projects
   // Add pics if not any
+  console.log('got prjs from sub ', projects);
   let projectsWithImages = projects;
   if (!projects[0].pictures) {
     projectsWithImages = projects.map(p => ({
@@ -73,12 +74,25 @@ const subscription = client.subscribe('/projects', (projects) => {
   action({ type: 'projects', payload: projectsWithImages });
 });
 
-subscription.callback(() => {
-  console.log('[SUBSCRIBE SUCCEEDED]');
+projectsSubscription.callback(() => {
+  console.log('[SUBSCRIBE PROJECTS SUCCEEDED]');
 });
 
-subscription.errback((error) => {
-  console.log('[SUBSCRIBE FAILED]', error);
+projectsSubscription.errback((error) => {
+  console.log('[SUBSCRIBE PROJECTS FAILED]', error);
+});
+
+const categoriesSubscription = client.subscribe('/categories', (categories) => {
+  console.log('got categories from sub ', categories);
+  action({ type: 'categories', payload: categories });
+});
+
+categoriesSubscription.callback(() => {
+  console.log('[SUBSCRIBE CATEGORIES SUCCEEDED]');
+});
+
+categoriesSubscription.errback((error) => {
+  console.log('[SUBSCRIBE CATEGORIES FAILED]', error);
 });
 
 export default connect(

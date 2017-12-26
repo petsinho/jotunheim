@@ -11,6 +11,16 @@ export const getAllProjects = (state, action) => {
   }
 };
 
+export const getAllCategories = (state, action) => {
+  const { type, payload } = action;
+  switch (type) {
+    case 'categories':
+      return payload || state;
+    default:
+      return state || [];
+  }
+};
+
 export const getSelectedProject = (state, id) => {
   if (!state || !state.projects) return null;
   console.log('state.projects', state.projects);
@@ -18,4 +28,8 @@ export const getSelectedProject = (state, id) => {
   return _.find(state.projects, p => p.id === id);
 };
 
-export default combineReducers({ projects: getAllProjects, getSelectedProject });
+export default combineReducers({
+  projects: getAllProjects,
+  categories: getAllCategories,
+  getSelectedProject,
+});
