@@ -56,8 +56,9 @@ const getSomePictures = (howMany = Math.ceil(Math.random() * 10)) => {
 
 const action = ({ type, payload }) => store.dispatch({ type, payload });
 
-// const client = new Faye.Client(`${wsServerUrl}:${wsPort}`);
-const client = new Faye.Client(`http://localhost:${wsPort}`);
+console.log('server: ', wsServerUrl);
+const client = new Faye.Client(`${wsServerUrl}:${wsPort}`);
+// const client = new Faye.Client(`http://localhost:${wsPort}`);
 client.addWebsocketExtension(deflate);
 
 const projectsSubscription = client.subscribe('/projects', (projects) => {

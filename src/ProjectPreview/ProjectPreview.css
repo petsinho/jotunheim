@@ -1,14 +1,14 @@
 .project-preview-container{
   display: flex;
   flex-direction: column;
-  margin: auto;
   width: 25%;
-  margin: 5px;
+  margin: 15px;
   font-size: medium;
   color: white;
   padding: 5px;
   font-family: 'Amatic SC';
-  padding-top: 50px;
+  padding-top: 80px;
+  max-height: 280px;
 }
 
 .project-preview-item{
@@ -21,12 +21,13 @@
   display: flex;
   justify-content: center;
   font-size: xx-large;
+  min-height: 50px;
+  overflow-x: auto;
 }
 
 .project-preview-item:hover {
   border-color: white;
 }
-
 
 .project-previews-wrap{
   display: flex;

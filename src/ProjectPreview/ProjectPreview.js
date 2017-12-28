@@ -39,13 +39,28 @@ class ProjectPreview extends Component {
 
   render() {
     const { id, title, description } = this.props.project;
+    const descriptionShort =
+      description.length > 100 ?
+        (<div> { `${description.substring(0, 100)} ...`}
+          <Link style={{ textDecoration: 'none', color: 'gray' }} to={`/project/${id}`}> Read More</Link>
+        </div>) :
+        <div> {description} </div>;
+
+    const textSize = description.length > 80 ?
+      description.length > 120 ?
+       { fontSize: 'large' } :
+      { fontSize: 'x-large' } : {};
+
+    const titleShort =
+      (<Link style={{ textDecoration: 'none' }} to={`/project/${id}`}>
+        <div className="project-preview-item name" style={{ ...textSize }} > {title} </div>
+      </Link>);
+
     return (
       <div className="project-preview-container">
-        <Link style={{ textDecoration: 'none' }} to={`/project/${id}`} >
-          <div className="project-preview-item name"> {title} </div>
-        </Link>
+        {titleShort}
         {this.renderCarousel()}
-        <div className="project-preview-item"> {description} </div>
+        <div className="project-preview-item"> {descriptionShort} </div>
       </div>
     );
   }
