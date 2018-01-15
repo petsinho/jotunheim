@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 import deflate from 'permessage-deflate';
 import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-// import logo from './logo.svg';
 import './App.css';
 import Header from './Header/Header';
 import ProjectPreviews from './ProjectPreview/ProjectPreviews';

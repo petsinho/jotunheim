@@ -1,6 +1,7 @@
 
 .project-detail{
-  margin: 5px;
+  margin: 15px;
+  padding-top: 35px;
   cursor: pointer;
   color: white;
 }
@@ -11,10 +12,11 @@
   justify-content: center;
 }
 
-.project-desc{
+.desc{
   font-size: large;
   color: white;
   align-content: center;
+  padding-top: 30px;
 }
 
 .project-preview-item:hover {

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Markdown from 'react-remarkable';
 import './ProjectDetails.css';
 import Carousel from '../Carousel/Carousel';
 
@@ -23,7 +24,9 @@ class ProjectDetails extends Component {
       <div>
         <div className="project-detail name"> {project.title} </div>
         {this.renderCarousel()}
-        <div className="project-detail desc"> {project.description} </div>
+        <div className="project-detail desc">
+          <Markdown source={project.description}/>
+        </div>
       </div>
     ) :
     '';
