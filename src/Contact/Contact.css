@@ -1,0 +1,14 @@
+.contactText{
+    font-family: 'Titillium Web', sans-serif;
+    font-size: 28px;
+    color: rgba(255, 234, 203, 0.486);
+    margin: 15%;
+    margin-top: 80px;
+    align-self: flex-start;
+    text-align: left;
+  }
+  
+  ul {
+    list-style: square inside url("dot.png");
+    padding: 15px;
+  }

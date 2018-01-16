@@ -26,6 +26,9 @@ body {
 }
 
 .App {
+  display: flex;
+  flex-direction: column;
+  align-content: space-between;
   text-align: center;
 }
 
@@ -48,6 +51,12 @@ body {
   font-size: large;
 }
 
+.copyRight {
+  position: absolute;
+  color: grey;
+  bottom: 5px;
+  align-self: center;
+}
 @keyframes App-logo-spin {
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
