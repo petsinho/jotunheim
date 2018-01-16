@@ -13,6 +13,8 @@ import store from './store';
 
 const { wsServerUrl, wsPort } = require('./secrets');
 
+const serverUrl = wsServerUrl || 'https://muspellheimapp.t37znx8fuu.us-east-1.elasticbeanstalk.com';
+const webSocketPort = wsPort || 53368;
 
 class App extends Component {
   static propTypes = {
@@ -37,9 +39,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={this.renderPreviews} />
           </Switch>
-          <div className="copyRight">
+          {/* <div className="copyRight">
             Copyright 2018 - Panagiotis Petsas
-          </div>
+          </div> */}
         </div>
       </Router>
     );
@@ -56,8 +58,8 @@ const getSomePictures = (howMany = Math.ceil(Math.random() * 10)) => {
 };
 
 const action = ({ type, payload }) => store.dispatch({ type, payload });
-const client = new Faye.Client(`${wsServerUrl}:${wsPort}`);
-// const client = new Faye.Client(`http://localhost:${wsPort}`);
+// const client = new Faye.Client(`${serverUrl}:${webSocketPort}`);
+const client = new Faye.Client(`https://localhost:${webSocketPort}`);
 client.addWebsocketExtension(deflate);
 
 const projectsSubscription = client.subscribe('/projects', (projects) => {
