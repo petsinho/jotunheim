@@ -55,7 +55,7 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "fix-refs": "node ./fix-refs.js",
-    "build-deploy": "npm run build && npm run fix-refs && s3cmd sync ./build/ s3://vanaheim",
+    "build-deploy": "npm run build && npm run fix-refs && s3cmd sync ./build/ s3://panagiotispetsas.tech",
     "sync-build-s3": "npm run fix-refs && node sync-s3/sync.js",
     "lint": "eslint src"
   }

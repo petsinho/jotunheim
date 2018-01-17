@@ -26,10 +26,10 @@ const params = {
                          // that have no corresponding local file.
 
   s3Params: {
-    Bucket: 'vanaheim',
+    Bucket: 'panagiotispetsas.tech',
   //  Prefix: 'some/remote/dir/',
-      // other options supported by putObject, except Body and ContentLength.
-      // See: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property
+  // other options supported by putObject, except Body and ContentLength.
+  // See: http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#putObject-property
   },
 };
 const uploader = client.uploadDir(params);
