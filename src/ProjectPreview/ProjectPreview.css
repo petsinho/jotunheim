@@ -21,6 +21,7 @@
   display: flex;
   justify-content: center;
   font-size: xx-large;
+  font-stretch: semi-expanded;
   min-height: 50px;
   overflow-x: auto;
 }

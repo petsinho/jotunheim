@@ -36,7 +36,7 @@ class FunFacts extends Component {
             { this.state.factoid}
             {/* {<Typist.Delay ms={1200} />} */}
           </Typist>
-          <div style={{ marginTop: '50px' }}>
+          <div style={{ marginTop: '150px', color: 'white' }}>
             If you liked this, you can waste more of your time:
             <div>
               Click refresh!

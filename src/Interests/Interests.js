@@ -8,6 +8,9 @@ class Interests extends Component {
   render() {
     return (
       <div>
+        <video width="320" height="240" controls>
+          <source src="https://www.youtube.com/watch?v=HV1-AjwDJwM" type="video/ogg"/>
+      </video>
         <div className="interestsText">
         In my <span style={{fontSize: 'medium'}}> (little) </span>free time...
           <ul>

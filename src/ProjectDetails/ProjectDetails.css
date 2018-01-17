@@ -1,22 +1,19 @@
-
-.project-detail{
-  margin: 15px;
-  padding-top: 35px;
-  cursor: pointer;
-  color: white;
-}
-
-.project-name{
+.project-detail-name{
   font-size: xx-large;
   color: white;
   justify-content: center;
+  margin-top: 80px;
+  margin-bottom: 30px;
 }
 
-.desc{
+.project-detail-desc{
   font-size: large;
   color: white;
-  align-content: center;
+  /* align-content: center; */
   padding-top: 30px;
+  font-size: x-large;
+  width: 60%;
+  margin: auto;
 }
 
 .project-preview-item:hover {
