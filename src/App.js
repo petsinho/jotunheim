@@ -58,42 +58,65 @@ const getSomePictures = (howMany = Math.ceil(Math.random() * 10)) => {
 };
 
 const action = ({ type, payload }) => store.dispatch({ type, payload });
-const client = new Faye.Client(`${serverUrl}:${webSocketPort}`);
-// const client = new Faye.Client(`http://localhost:${webSocketPort}`);
-client.addWebsocketExtension(deflate);
 
-const projectsSubscription = client.subscribe('/projects', (projects =  require('./offline-data.json')) => {
-  //  Call reducer that will update store with projects
-  // Add pics if not any
-  let projectsWithImages = projects;
-  if (!projects[0].pictures) {
-    projectsWithImages = projects.map(p => ({
-      ...p,
-      pictures: getSomePictures(),
-    }));
-  }
-  action({ type: 'projects', payload: projectsWithImages });
-});
 
-projectsSubscription.callback(() => {
-  console.log('[SUBSCRIBE PROJECTS SUCCEEDED]');
-});
+const withImages = (projects) =>  projects.map(p => 
+  ({
+    ...p,
+    pictures: getSomePictures(),
+}));
 
-projectsSubscription.errback((error) => {
-  console.log('[SUBSCRIBE PROJECTS FAILED]', error);
-});
+/* ----------------- With Subscription (need ssl for wss)  */
+// const client = new Faye.Client(`${serverUrl}:${webSocketPort}`);
+// // const client = new Faye.Client(`http://localhost:${webSocketPort}`);
+// client.addWebsocketExtension(deflate);
 
-const categoriesSubscription = client.subscribe('/categories', (categories) => {
-  action({ type: 'categories', payload: categories });
-});
 
-categoriesSubscription.callback(() => {
-  console.log('[SUBSCRIBE CATEGORIES SUCCEEDED]');
-});
+// const projectsSubscription = client.subscribe('/projects', (projects =  require('./offline-data.json')) => {
+//   //  Call reducer that will update store with projects
+//   // Add pics if not any
+//   let projectsWithImages = projects;
+//   if (!projects[0].pictures) {
+//     projectsWithImages = withImages(projects)
+//   }
+//   action({ type: 'projects', payload: projectsWithImages });
+// });
 
-categoriesSubscription.errback((error) => {
-  console.log('[SUBSCRIBE CATEGORIES FAILED]', error);
-});
+// projectsSubscription.callback(() => {
+//   console.log('[SUBSCRIBE PROJECTS SUCCEEDED]');
+// });
+
+// projectsSubscription.errback((error) => {
+//   console.log('[SUBSCRIBE PROJECTS FAILED]', error);
+// });
+
+// const categoriesSubscription = client.subscribe('/categories', (categories) => {
+//   action({ type: 'categories', payload: categories });
+// });
+
+// categoriesSubscription.callback(() => {
+//   console.log('[SUBSCRIBE CATEGORIES SUCCEEDED]');
+// });
+
+// categoriesSubscription.errback((error) => {
+//   console.log('[SUBSCRIBE CATEGORIES FAILED]', error);
+// });
+/* ------------------   With Subscription (need ssl for wss)  */
+
+
+
+/* ----------------- Without Subscription (load static content)  */
+
+const projects =  require('./offline-data.json');
+let projectsWithImages = projects;
+if (!projects[0].pictures) {
+  projectsWithImages = withImages(projects)
+}
+action({ type: 'projects', payload: projectsWithImages });
+
+
+/* ----------------- Without Subscription (load static content)  */
+
 
 export default connect(
   state => ({
