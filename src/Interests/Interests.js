@@ -1,16 +1,34 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Markdown from 'react-remarkable';
+import YouTube from 'react-youtube';
 import './Interests.css';
 
 class Interests extends Component {
 
+  renderVideo(){
+    const opts = {
+      height: '390',
+      width: '640',
+      playerVars: {
+        autoplay: 0
+      }
+    };
+
+    return (
+      <YouTube
+        videoId="HV1-AjwDJwM"
+        opts={opts}
+        onReady={this._onReady}
+      />
+    );
+
+  }
   render() {
     return (
       <div>
-        <video width="320" height="240" controls>
-          <source src="https://www.youtube.com/watch?v=HV1-AjwDJwM" type="video/ogg"/>
-      </video>
+        <div style={{ margin: '50px'}}>
+          {this.renderVideo()}
+        </div>
         <div className="interestsText">
         In my <span style={{fontSize: 'medium'}}> (little) </span>free time...
           <ul>
