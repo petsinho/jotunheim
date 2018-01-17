@@ -22,3 +22,4 @@ yarn-error.log*
 
 # secrets/credentials
 src/secrets.js
+src/offline-data.json

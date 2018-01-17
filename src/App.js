@@ -13,7 +13,7 @@ import store from './store';
 
 const { wsServerUrl, wsPort } = require('./secrets');
 
-const serverUrl = wsServerUrl || 'https://muspellheimapp.t37znx8fuu.us-east-1.elasticbeanstalk.com';
+const serverUrl = wsServerUrl || 'http://muspellheimapp.t37znx8fuu.us-east-1.elasticbeanstalk.com';
 const webSocketPort = wsPort || 53368;
 
 class App extends Component {
@@ -58,11 +58,11 @@ const getSomePictures = (howMany = Math.ceil(Math.random() * 10)) => {
 };
 
 const action = ({ type, payload }) => store.dispatch({ type, payload });
-// const client = new Faye.Client(`${serverUrl}:${webSocketPort}`);
-const client = new Faye.Client(`https://localhost:${webSocketPort}`);
+const client = new Faye.Client(`${serverUrl}:${webSocketPort}`);
+// const client = new Faye.Client(`http://localhost:${webSocketPort}`);
 client.addWebsocketExtension(deflate);
 
-const projectsSubscription = client.subscribe('/projects', (projects) => {
+const projectsSubscription = client.subscribe('/projects', (projects =  require('./offline-data.json')) => {
   //  Call reducer that will update store with projects
   // Add pics if not any
   let projectsWithImages = projects;
