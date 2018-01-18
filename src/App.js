@@ -6,23 +6,19 @@ import { connect } from 'react-redux';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import './App.css';
 import Header from './Header/Header';
-import ProjectPreviews from './ProjectPreview/ProjectPreviews';
 import Typewriter from './Typewriter/Typewriter';
 import ProjectRoutes from './ProjectRoutes/ProjectRoutes';
 import store from './store';
 
 const { wsServerUrl, wsPort } = require('./secrets');
-
 const serverUrl = wsServerUrl || 'http://muspellheimapp.t37znx8fuu.us-east-1.elasticbeanstalk.com';
 const webSocketPort = wsPort || 53368;
+
 
 class App extends Component {
   static propTypes = {
     projects: PropTypes.array,
   };
-
-  renderPreviews = () =>
-    <ProjectPreviews projects={this.props.projects} />;
 
   renderTyper = () =>
     <Typewriter />;
@@ -36,9 +32,9 @@ class App extends Component {
           <Switch>
             <Route exact path="/" render={this.renderTyper} />
           </Switch>
-          <Switch>
+          {/* <Switch>
             <Route exact path="/" render={this.renderPreviews} />
-          </Switch>
+          </Switch> */}
           {/* <div className="copyRight">
             Copyright 2018 - Panagiotis Petsas
           </div> */}
@@ -104,18 +100,6 @@ const withImages = (projects) =>  projects.map(p =>
 /* ------------------   With Subscription (need ssl for wss)  */
 
 
-
-/* ----------------- Without Subscription (load static content)  */
-
-const projects =  require('./offline-data.json');
-let projectsWithImages = projects;
-if (!projects[0].pictures) {
-  projectsWithImages = withImages(projects)
-}
-action({ type: 'projects', payload: projectsWithImages });
-
-
-/* ----------------- Without Subscription (load static content)  */
 
 
 export default connect(

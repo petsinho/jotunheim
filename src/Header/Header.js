@@ -9,6 +9,9 @@ class Header extends Component {
         <Link style={{ textDecoration: 'none' }} to={'/'}>
           <div className="header-item"> Home </div>
         </Link>
+        <Link style={{ textDecoration: 'none' }} to={'/projects'}>
+          <div className="header-item"> Projects </div>
+        </Link>
         <Link style={{ textDecoration: 'none' }} to={'/interests'}>
           <div className="header-item"> Interests </div>
         </Link>

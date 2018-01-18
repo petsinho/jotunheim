@@ -4,10 +4,12 @@ import ProjectDetails from '../ProjectDetails';
 import FunFacts from '../FunFacts';
 import Interests from '../Interests';
 import Contact from '../Contact';
+import Projects from '../Projects';
 
 const Header = () =>
   (<Switch>
     <Route path="/project/:id" component={ProjectDetails} />
+    <Route path="/projects" component={Projects} />
     <Route path="/funFacts" component={FunFacts} />
     <Route path="/interests" component={Interests} />
     <Route path="/contact" component={Contact} />
