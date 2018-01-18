@@ -30,6 +30,7 @@ class App extends Component {
           <Header />
           <ProjectRoutes />
           <Switch>
+            Hey
             <Route exact path="/" render={this.renderTyper} />
           </Switch>
           {/* <Switch>
