@@ -1,3 +1,11 @@
-import Projects from './Projects';
+import { connect } from 'react-redux';
+import Projects from "./Projects";
+import { getAllProjects } from "../reducers";
 
-export default Projects;
+function mapStateToProps(state, ownProps) {
+  return {
+    projects: getAllProjects(state, {type:'projects'}).projects
+  };
+}
+
+export default connect(mapStateToProps)(Projects);

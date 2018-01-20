@@ -19,7 +19,6 @@ class ProjectDetails extends Component {
 
   render() {
     const { project } = this.props;
-
     return project ? (
       <div>
         <div className="project-detail-name"> {project.title} </div>

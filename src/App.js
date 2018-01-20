@@ -98,39 +98,39 @@ const withImages = projects =>
   }));
 
 /* ----------------- With Subscription (need ssl for wss)  */
-// const client = new Faye.Client(`${serverUrl}:${webSocketPort}`);
-// // const client = new Faye.Client(`http://localhost:${webSocketPort}`);
-// client.addWebsocketExtension(deflate);
+const client = new Faye.Client(`${serverUrl}:${webSocketPort}`);
+// const client = new Faye.Client(`http://localhost:${webSocketPort}`);
+client.addWebsocketExtension(deflate);
 
-// const projectsSubscription = client.subscribe('/projects', (projects =  require('./offline-data.json')) => {
-//   //  Call reducer that will update store with projects
-//   // Add pics if not any
-//   let projectsWithImages = projects;
-//   if (!projects[0].pictures) {
-//     projectsWithImages = withImages(projects)
-//   }
-//   action({ type: 'projects', payload: projectsWithImages });
-// });
+const projectsSubscription = client.subscribe('/projects', (projects) => {
+  //  Call reducer that will update store with projects
+  // Add pics if not any
+  let projectsWithImages = projects;
+  if (!projects[0].pictures) {
+    projectsWithImages = withImages(projects)
+  }
+  action({ type: 'projects', payload: projectsWithImages });
+});
 
-// projectsSubscription.callback(() => {
-//   console.log('[SUBSCRIBE PROJECTS SUCCEEDED]');
-// });
+projectsSubscription.callback(() => {
+  console.log('[SUBSCRIBE PROJECTS SUCCEEDED]');
+});
 
-// projectsSubscription.errback((error) => {
-//   console.log('[SUBSCRIBE PROJECTS FAILED]', error);
-// });
+projectsSubscription.errback((error) => {
+  console.log('[SUBSCRIBE PROJECTS FAILED]', error);
+});
 
-// const categoriesSubscription = client.subscribe('/categories', (categories) => {
-//   action({ type: 'categories', payload: categories });
-// });
+const categoriesSubscription = client.subscribe('/categories', (categories) => {
+  action({ type: 'categories', payload: categories });
+});
 
-// categoriesSubscription.callback(() => {
-//   console.log('[SUBSCRIBE CATEGORIES SUCCEEDED]');
-// });
+categoriesSubscription.callback(() => {
+  console.log('[SUBSCRIBE CATEGORIES SUCCEEDED]');
+});
 
-// categoriesSubscription.errback((error) => {
-//   console.log('[SUBSCRIBE CATEGORIES FAILED]', error);
-// });
+categoriesSubscription.errback((error) => {
+  console.log('[SUBSCRIBE CATEGORIES FAILED]', error);
+});
 /* ------------------   With Subscription (need ssl for wss)  */
 
 export default connect(

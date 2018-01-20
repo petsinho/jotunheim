@@ -17,7 +17,6 @@ class ProjectPreviews extends Component {
 
   render() {
     const { projects } = this.props;
-    console.log('projs : ', projects);
     return (
       <div className="project-previews-wrap">
         { projects.map(p =>

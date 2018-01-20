@@ -5,6 +5,7 @@ import FunFacts from '../FunFacts';
 import Interests from '../Interests';
 import Contact from '../Contact';
 import Projects from '../Projects';
+import App from '../App';
 
 const Header = () =>
   (<Switch>
@@ -13,6 +14,7 @@ const Header = () =>
     <Route path="/funFacts" component={FunFacts} />
     <Route path="/interests" component={Interests} />
     <Route path="/contact" component={Contact} />
+    {/* <Route path="/" component={Projects} /> */}
   </Switch>);
 
 export default Header;
