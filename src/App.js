@@ -1,27 +1,68 @@
-import React, { Component } from 'react';
-import Faye from 'faye';
-import PropTypes from 'prop-types';
-import deflate from 'permessage-deflate';
-import { connect } from 'react-redux';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import './App.css';
-import Header from './Header/Header';
-import Typewriter from './Typewriter/Typewriter';
-import ProjectRoutes from './ProjectRoutes/ProjectRoutes';
-import store from './store';
-
-const { wsServerUrl, wsPort } = require('./secrets');
-const serverUrl = wsServerUrl || 'http://muspellheimapp.t37znx8fuu.us-east-1.elasticbeanstalk.com';
+import React, { Component } from "react";
+import Faye from "faye";
+import PropTypes from "prop-types";
+import deflate from "permessage-deflate";
+import { connect } from "react-redux";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { flipInY } from "react-animations";
+import Radium, { StyleRoot } from "radium";
+import "./App.css";
+import Header from "./Header/Header";
+import Typewriter from "./Typewriter/Typewriter";
+import ProjectRoutes from "./ProjectRoutes/ProjectRoutes";
+import store from "./store";
+const { wsServerUrl, wsPort } = require("./secrets");
+const serverUrl =
+  wsServerUrl ||
+  "http://muspellheimapp.t37znx8fuu.us-east-1.elasticbeanstalk.com";
 const webSocketPort = wsPort || 53368;
 
+const styles = {
+  flipInY: {
+    animation: "x 2s",
+    animationName: Radium.keyframes(flipInY, "flipInY")
+  }
+};
 
 class App extends Component {
   static propTypes = {
-    projects: PropTypes.array,
+    projects: PropTypes.array
   };
 
-  renderTyper = () =>
-    <Typewriter />;
+  renderTyper = () => <Typewriter />;
+
+  renderIntro = () => (
+    <div style={{ color: "white", margin: "20px" }}>
+      <StyleRoot>
+        <div className="test" style={styles.flipInY}>
+          <div style={{ margin: "50px" }}>
+            <img
+              width="300"
+              height="300"
+              src="https://s3.amazonaws.com/jotunheim/website/images/home/me300.png"
+            />
+          </div>
+        </div>
+      </StyleRoot>
+      <div className="about">
+        Hey there! I'm Panagiotis Petsas,
+        <p>
+          Full Stack software engineer passionate about Web, Game Development
+          and IoT enthusiast from Greece.
+        </p>
+        <p>
+          Currently living in Germany
+        </p>
+        <div className="myQuote">
+          <blockquote>
+            The only repetitive task I am willing to do, is automating my
+            repetitive tasks.
+            <cite>myself</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  );
 
   render() {
     return (
@@ -30,15 +71,9 @@ class App extends Component {
           <Header />
           <ProjectRoutes />
           <Switch>
-            Hey
+            <Route exact path="/" render={this.renderIntro} />
             <Route exact path="/" render={this.renderTyper} />
           </Switch>
-          {/* <Switch>
-            <Route exact path="/" render={this.renderPreviews} />
-          </Switch> */}
-          {/* <div className="copyRight">
-            Copyright 2018 - Panagiotis Petsas
-          </div> */}
         </div>
       </Router>
     );
@@ -56,18 +91,16 @@ const getSomePictures = (howMany = Math.ceil(Math.random() * 10)) => {
 
 const action = ({ type, payload }) => store.dispatch({ type, payload });
 
-
-const withImages = (projects) =>  projects.map(p => 
-  ({
+const withImages = projects =>
+  projects.map(p => ({
     ...p,
-    pictures: getSomePictures(),
-}));
+    pictures: getSomePictures()
+  }));
 
 /* ----------------- With Subscription (need ssl for wss)  */
 // const client = new Faye.Client(`${serverUrl}:${webSocketPort}`);
 // // const client = new Faye.Client(`http://localhost:${webSocketPort}`);
 // client.addWebsocketExtension(deflate);
-
 
 // const projectsSubscription = client.subscribe('/projects', (projects =  require('./offline-data.json')) => {
 //   //  Call reducer that will update store with projects
@@ -100,12 +133,9 @@ const withImages = (projects) =>  projects.map(p =>
 // });
 /* ------------------   With Subscription (need ssl for wss)  */
 
-
-
-
 export default connect(
   state => ({
-    projects: state.projects,
+    projects: state.projects
   }),
   dispatch => ({
     // getActiveProjects: () => dispatch({
@@ -119,7 +149,5 @@ export default connect(
     //   type: action.setDisplay,
     //   display: display.button,
     // }),
-  }),
+  })
 )(App);
-
-// export default App;

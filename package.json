@@ -11,9 +11,12 @@
     "lodash": "^4.17.4",
     "nuka-carousel": "^3.0.0",
     "permessage-deflate": "^0.1.6",
+    "prettier": "^1.10.2",
     "prop-types": "^15.6.0",
+    "radium": "^0.21.1",
     "react": "^16.1.1",
     "react-addons-css-transition-group": "^15.6.2",
+    "react-animations": "^1.0.0",
     "react-dom": "^16.1.1",
     "react-icons": "^2.2.7",
     "react-redux": "^5.0.6",
@@ -57,6 +60,7 @@
     "fix-refs": "node ./fix-refs.js",
     "build-deploy": "npm run build && npm run fix-refs && s3cmd sync ./build/ s3://panagiotispetsas.tech",
     "sync-build-s3": "npm run fix-refs && node sync-s3/sync.js",
-    "lint": "eslint src"
+    "lint": "eslint src",
+    "deploy": "npm run build && npm run fix-refs && npm run sync-build-s3"
   }
 }
