@@ -3,25 +3,20 @@ import PropTypes from 'prop-types';
 import ProjectPreview from './ProjectPreview';
 import './ProjectPreview.css';
 
-
 class ProjectPreviews extends Component {
+  onChange = () => {};
 
-  onChange = () => {
-  }
+  onClickItem = () => {};
 
-  onClickItem = () => {
-  }
-
-  onClickThumb = () => {
-  }
+  onClickThumb = () => {};
 
   render() {
     const { projects } = this.props;
     return (
       <div className="project-previews-wrap">
-        { projects.map(p =>
-          <ProjectPreview key={`project${p.title}`} project={p} />,
-        )}
+        {projects.map(p => (
+          <ProjectPreview key={`project${p.title}`} project={p} />
+        ))}
       </div>
     );
   }
@@ -33,9 +28,9 @@ ProjectPreviews.propTypes = {
       id: PropTypes.string.isRequired,
       title: PropTypes.string.isRequired,
       description: PropTypes.string.isRequired,
-      pictures: PropTypes.array,
-    }),
-  ),
+      pictures: PropTypes.array
+    })
+  )
 };
 
 export default ProjectPreviews;
