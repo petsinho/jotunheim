@@ -20,7 +20,7 @@
 .name{
   display: flex;
   justify-content: center;
-  font-size: xx-large;
+  font-size: '30px';
   font-stretch: semi-expanded;
   min-height: 50px;
   overflow-x: auto;

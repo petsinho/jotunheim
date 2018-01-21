@@ -84,11 +84,10 @@ const getPicturesFromMarkdown = (markdown) => {
   const result = [];
   const imageRegex = /(https?:\/\/.*\.(?:png|jpg|jpeg))/g;
   const imageUrls = markdown.match(imageRegex);
-  console.log('urls matched: ', imageUrls);
   if(imageUrls && imageUrls.length ) {
     return imageUrls;
   }
-  for (let i = 0; i < 1; i++) {
+  for (let i = 0; i < 3; i++) {
     const picNumber = Math.ceil(Math.random() * 100);
     result.push(`https://picsum.photos/300?image=${picNumber}`);
   }

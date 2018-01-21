@@ -57,15 +57,14 @@ class ProjectPreview extends Component {
     const textSize =
       description.length > 80
         ? description.length > 120
-          ? { fontSize: 'large' }
-          : { fontSize: 'x-large' }
+          ? { fontSize: 'x-large' }
+          : { fontSize: 'xx-large' }
         : {};
 
     const titleShort = (
       <Link style={{ textDecoration: 'none' }} to={`/project/${id}`}>
         <div className="project-preview-item name" style={{ ...textSize }}>
-          {' '}
-          {title}{' '}
+          {title}
         </div>
       </Link>
     );
