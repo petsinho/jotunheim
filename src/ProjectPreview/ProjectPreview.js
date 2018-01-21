@@ -42,13 +42,11 @@ class ProjectPreview extends Component {
     const descriptionShort =
       description.length > 100 ? (
         <div>
-          {' '}
           {`${description.substring(0, 100)} ...`}
           <Link
             style={{ textDecoration: 'none', color: 'gray' }}
             to={`/project/${id}`}
           >
-            {' '}
             Read More
           </Link>
         </div>

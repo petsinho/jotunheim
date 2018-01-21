@@ -80,9 +80,15 @@ class App extends Component {
   }
 }
 
-const getSomePictures = (howMany = Math.ceil(Math.random() * 10)) => {
+const getPicturesFromMarkdown = (markdown) => {
   const result = [];
-  for (let i = 0; i < howMany; i++) {
+  const imageRegex = /(https?:\/\/.*\.(?:png|jpg|jpeg))/g;
+  const imageUrls = markdown.match(imageRegex);
+  console.log('urls matched: ', imageUrls);
+  if(imageUrls && imageUrls.length ) {
+    return imageUrls;
+  }
+  for (let i = 0; i < 1; i++) {
     const picNumber = Math.ceil(Math.random() * 100);
     result.push(`https://picsum.photos/300?image=${picNumber}`);
   }
@@ -94,7 +100,7 @@ const action = ({ type, payload }) => store.dispatch({ type, payload });
 const withImages = projects =>
   projects.map(p => ({
     ...p,
-    pictures: getSomePictures()
+    pictures: getPicturesFromMarkdown(p.description)
   }));
 
 /* ----------------- With Subscription (need ssl for wss)  */

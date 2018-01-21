@@ -22,7 +22,7 @@ class ProjectDetails extends Component {
     return project ? (
       <div>
         <div className="project-detail-name"> {project.title} </div>
-        {this.renderCarousel()}
+        {/* {this.renderCarousel()} */}
         <div className="project-detail-desc">
           <Markdown source={project.description}/>
         </div>
