@@ -146,7 +146,6 @@ const withImages = projects =>
 fetch('https://s3.amazonaws.com/jotunheim/website/content/projects/projects-offline.json')
   .then( async (res) => {
     const projects = await res.json();
-    console.log('got ptrojs from bucket ', projects);
     return  action({ type: 'projects', payload: withImages(projects) });
   })
   .catch(err => console.error('error fetching offline data: ', err))
