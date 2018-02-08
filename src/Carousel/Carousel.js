@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import LeftHand from 'react-icons/lib/fa/hand-o-left';
 import RightHand from 'react-icons/lib/fa/hand-o-right';
 import CarouselBase from 'nuka-carousel';
+import Image from 'react-image-resizer';
+
 import './Carousel.css';
 
 const cursor = {
@@ -88,11 +90,24 @@ class Carousel extends Component {
     ];
     const { height, width } = sizes[size];
     return (
-      <CarouselBase autoplay wrapAround autoplayInterval={carouselInterval} decorators={Decorators} >
+      <CarouselBase 
+      autoplay 
+      wrapAround 
+      easing="easeInOutSine"
+      edgeEasing="easeInOutSine"
+      initialSlideHeight={height}
+      initialSlideWidth={width}
+      autoplayInterval={carouselInterval} decorators={Decorators} >
         {pictures.map(img =>
         (
           <div key={`image${img}`}>
             <img src={img} height={height} width={width} />
+            {/* <Image
+              src={img}
+              alt="project image"
+              width={width-20}
+              height={height}
+            /> */}
           </div>
         ),
       )}
